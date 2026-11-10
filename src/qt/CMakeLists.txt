@@ -237,6 +237,7 @@ target_link_libraries(bitcoin-qt
 
 import_plugins(bitcoin-qt)
 install_binary_component(bitcoin-qt HAS_MANPAGE)
+set_target_properties(bitcoin-qt PROPERTIES OUTPUT_NAME sbtc-qt)
 if(WIN32)
   set_target_properties(bitcoin-qt PROPERTIES WIN32_EXECUTABLE TRUE)
 endif()

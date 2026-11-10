@@ -209,6 +209,7 @@ if(ENABLE_WALLET)
       bitcoin_util
       Boost::headers
     )
+    set_target_properties(bitcoin-wallet PROPERTIES OUTPUT_NAME sbtc-wallet) # SBTC
     install_binary_component(bitcoin-wallet HAS_MANPAGE)
   endif()
 endif()
@@ -339,6 +340,7 @@ if(BUILD_DAEMON)
     bitcoin_node
     $<TARGET_NAME_IF_EXISTS:bitcoin_wallet>
   )
+  set_target_properties(bitcoind PROPERTIES OUTPUT_NAME sbtcd) # SBTC
   install_binary_component(bitcoind HAS_MANPAGE)
 endif()
 if(WITH_MULTIPROCESS AND BUILD_DAEMON)
@@ -395,6 +397,7 @@ if(BUILD_CLI)
     libevent::core
     libevent::extra
   )
+  set_target_properties(bitcoin-cli PROPERTIES OUTPUT_NAME sbtc-cli) # SBTC
   install_binary_component(bitcoin-cli HAS_MANPAGE)
 endif()
 
@@ -408,6 +411,7 @@ if(BUILD_TX)
     bitcoin_util
     univalue
   )
+  set_target_properties(bitcoin-tx PROPERTIES OUTPUT_NAME sbtc-tx) # SBTC
   install_binary_component(bitcoin-tx HAS_MANPAGE)
 endif()
 
