@@ -1,0 +1,21 @@
+[Unit]
+Description=SBTC Block Explorer (loopback only)
+After=network.target sbtcd.service
+Wants=sbtcd.service
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/sbtc-explorer
+ExecStart=/usr/bin/python3 /home/ubuntu/sbtc-explorer/explorer.py
+Environment=SBTC_DATADIR=/home/ubuntu/.sbtc-seed
+Environment=SBTC_EXPLORER_HOST=127.0.0.1
+Environment=SBTC_EXPLORER_PORT=3002
+Restart=on-failure
+RestartSec=3
+MemoryHigh=64M
+MemoryMax=80M
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

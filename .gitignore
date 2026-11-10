@@ -1,0 +1,32 @@
+# Build subdirectories.
+/*build*
+!/build-aux
+!/build_msvc
+
+*.pyc
+
+# Only ignore unexpected patches
+*.patch
+!contrib/guix/patches/*.patch
+!depends/patches/**/*.patch
+
+/CMakeUserPresets.json
+
+# Previous releases
+/releases
+
+#build tests
+test/lint/test_runner/target/
+
+/guix-build-*
+
+/ci/scratch/
+
+# --- SBTC additions: build outputs, depends artifacts, runtime data ---
+/build-*/
+/depends/built/
+/depends/work/
+*.log
+*.zip
+/.sbtc/
+__pycache__/
