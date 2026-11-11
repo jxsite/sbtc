@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SBTC · 重走比特币挖矿之路 | 属于普通人的 CPU 挖矿时代</title>
+  <meta name="description" content="SBTC 是一条 1:1 严格复刻 Bitcoin Core 规则的独立 Layer 1 原生公链。零预挖、无私募，普通电脑 CPU 即可挖矿，重现 2009 年中本聪挖矿黄金时代。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛏️</text></svg>">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(18, 25, 41, 0.75);
+      --card-border: rgba(255, 184, 0, 0.15);
+      --card-hover: rgba(255, 184, 0, 0.3);
+      --primary: #f5b942;
+      --primary-glow: rgba(245, 185, 66, 0.35);
+      --secondary: #38bdf8;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #10b981;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(245, 185, 66, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(56, 189, 248, 0.07) 0%, transparent 40%);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(9, 13, 22, 0.85);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .logo-badge {
+      font-size: 11px;
+      background: rgba(245, 185, 66, 0.15);
+      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+      border: 1px solid rgba(245, 185, 66, 0.3);
+    }
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--primary); }
+    .btn-nav {
+      background: linear-gradient(135deg, #f5b942, #e09b19);
+      color: #000 !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 185, 66, 0.1);
+      border: 1px solid rgba(245, 185, 66, 0.3);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 40%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #f5b942, #d98e16);
+      color: #090d16;
+      box-shadow: 0 4px 25px var(--primary-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(245, 185, 66, 0.5);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Stats strip */
+    .stats-bar {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+    }
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Section common */
+    section { padding: 80px 0; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-title h2 {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .section-title p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .feature-card:hover {
+      border-color: var(--card-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 18px;
+      display: inline-block;
+    }
+    .feature-card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Stepper */
+    .steps-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px 24px;
+      position: relative;
+    }
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(245, 185, 66, 0.15);
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .step-card h3 {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .step-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .code-tag {
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      color: var(--secondary);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    /* Ecosystem Grid */
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .eco-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s;
+    }
+    .eco-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-3px);
+    }
+    .eco-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .eco-header h4 { font-size: 17px; color: #fff; }
+    .eco-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+    .eco-link {
+      font-size: 13px;
+      color: var(--secondary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Table */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .specs-table td, .specs-table th {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 14px;
+    }
+    .specs-table th {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .specs-table td.param {
+      color: var(--text-muted);
+      width: 30%;
+    }
+    .specs-table td.val {
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      background: rgba(9, 13, 22, 0.95);
+    }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--primary); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 34px; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .stat-item { border-right: none; }
+      .steps-wrap { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="logo">
+        <span>⛏️ SBTC Core</span>
+        <span class="logo-badge">Layer 1</span>
+      </a>
+      <nav>
+        <a href="#about">理念</a>
+        <a href="#quickstart">极速开挖</a>
+        <a href="#specs">共识规则</a>
+        <a href="https://sbtc.leishen.work" target="_blank">区块浏览器 ↗</a>
+        <a href="https://github.com/jxsite/sbtc" target="_blank">GitHub ↗</a>
+        <a href="https://github.com/jxsite/sbtc/releases" class="btn-nav">立即开挖</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span>✨ 纯粹 PoW 双 SHA-256 · 零预挖 · 公平启动</span>
+      </div>
+      <h1>重走比特币挖矿之路</h1>
+      <p>
+        1:1 严格复刻 Bitcoin Core v29.5 经典共识机制。零预留、无募资，初期放宽算力门槛。<br>
+        无需昂贵的专业 ASIC 矿机，开启你的个人电脑 CPU，亲身体验 2009 年人人都可挖出区块的创世黄金时代！
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://github.com/jxsite/sbtc/releases" class="btn btn-primary">
+          <span>⚡ 下载 Windows 一键挖矿包</span>
+        </a>
+        <a href="https://sbtc.leishen.work" target="_blank" class="btn btn-outline">
+          <span>🔍 访问全网区块链浏览器</span>
+        </a>
+        <a href="https://sbtc.leishen.work/faucet" target="_blank" class="btn btn-outline">
+          <span>🚰 免费领取水龙头测试币</span>
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-value">21,000,000</div>
+          <div class="stat-label">总量上限 (恒定不变)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">50 SBTC</div>
+          <div class="stat-label">初始出块奖励 / 块</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">210,000</div>
+          <div class="stat-label">减半周期 (区块)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">CPU Ready</div>
+          <div class="stat-label">家用电脑随时开挖</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>为什么选择参与 SBTC？</h2>
+        <p>让区块链回归初心 —— 从工业矿场垄断回到每一个平等的个人算力节点</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💻</div>
+          <h3>一人一机，普通电脑即刻出块</h3>
+          <p>
+            初期放宽难度门槛（powLimit 冷启动），普通家用电脑 CPU 仅需几秒钟即可独立算出一个新区块，体验亲自当矿工爆块的成就感。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <h3>极致公平，0 预挖 / 0 私募</h3>
+          <p>
+            没有项目方特权，没有 VC 种子轮折扣，没有团队预留份额。每一枚 SBTC 的诞生，都严格来自算力贡献，100% 公平产出。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>原生 Layer 1，继承 BTC 顶级安全</h3>
+          <p>
+            绝非以太坊或波场上的代币智能合约，拥有属于自己的创世块与独立账本，底层架构与比特币主链一脉相承，经过 15 年安全验证。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">💎</div>
+          <h3>硬通缩经济与自适应难度</h3>
+          <p>
+            总量 2100 万枚永不增发，遵循每 2016 块自适应难度调节和每 21 万块减半机制。算力越多网络越稳固，早期筹码稀缺性极强。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stepper Section -->
+  <section id="quickstart" style="background: rgba(0,0,0,0.25);">
+    <div class="container">
+      <div class="section-title">
+        <h2>只需 3 步，1 分钟开启挖矿</h2>
+        <p>专为新手打造的傻瓜式 Windows 一键包，解压即用，无需配置任何复杂环境</p>
+      </div>
+
+      <div class="steps-wrap">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>下载并解压一键包</h3>
+          <p>
+            从官方 Releases 下载最新的 <strong>SBTC-Windows-v1-Fixed.zip</strong>，将其解压到任意固定文件夹（如 D:\SBTC）。
+          </p>
+          <div class="code-tag">解压即用 · 无需安装</div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>双击启动挖矿脚本</h3>
+          <p>
+            进入解压目录，双击运行 <strong>2-开始挖矿.bat</strong>。程序会自动连上主网种子节点，并为你生成专属的矿工收款地址。
+          </p>
+          <div class="code-tag">双击: 2-开始挖矿.bat</div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>全自动出块与收益入账</h3>
+          <p>
+            窗口会实时打印当前挖到的块高度与 50 SBTC 奖励。满 100 个确认后，双击 <strong>1-打开钱包.bat</strong> 即可查看余额并自由转账！
+          </p>
+          <div class="code-tag">每块奖励: 50 SBTC</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs Section -->
+  <section id="specs">
+    <div class="container">
+      <div class="section-title">
+        <h2>核心技术共识参数</h2>
+        <p>严格依照 Bitcoin Core v29.5 参数体系构建的独立区块链</p>
+      </div>
+
+      <table class="specs-table">
+        <tbody>
+          <tr>
+            <td class="param">基线源码版本</td>
+            <td class="val">Bitcoin Core v29.5 (Upstream Commit 16ca532c)</td>
+          </tr>
+          <tr>
+            <td class="param">共识算法</td>
+            <td class="val">双 SHA-256 (SHA-256d PoW)</td>
+          </tr>
+          <tr>
+            <td class="param">主网总量上限</td>
+            <td class="val">21,000,000 SBTC</td>
+          </tr>
+          <tr>
+            <td class="param">初始出块奖励</td>
+            <td class="val">50.00000000 SBTC</td>
+          </tr>
+          <tr>
+            <td class="param">减半周期</td>
+            <td class="val">每 210,000 区块 (约 4 年)</td>
+          </tr>
+          <tr>
+            <td class="param">难度调整周期</td>
+            <td class="val">每 2016 区块 (自适应目标 10 分钟出块)</td>
+          </tr>
+          <tr>
+            <td class="param">Coinbase 奖励成熟期</td>
+            <td class="val">100 个区块确认</td>
+          </tr>
+          <tr>
+            <td class="param">P2P 网络端口</td>
+            <td class="val">29333 (避免与 BTC 8333 冲突)</td>
+          </tr>
+          <tr>
+            <td class="param">RPC 通信端口</td>
+            <td class="val">29332</td>
+          </tr>
+          <tr>
+            <td class="param">原生 SegWit 地址前缀</td>
+            <td class="val">sbtc1... (Bech32 原生隔离见证)</td>
+          </tr>
+          <tr>
+            <td class="param">传统 Base58 地址前缀</td>
+            <td class="val">S... (P2PKH 前缀字节 63)</td>
+          </tr>
+          <tr>
+            <td class="param">创世区块哈希</td>
+            <td class="val">7e1b06f27931f03323b009995fba5dbb35fc5c8584a12880a2a51e1db81ecfd9</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Ecosystem Section -->
+  <section style="background: rgba(0,0,0,0.25);">
+    <div class="container">
+      <div class="section-title">
+        <h2>链上工具与生态导航</h2>
+        <p>全套基础设施完备，透明可查，自主可控</p>
+      </div>
+
+      <div class="eco-grid">
+        <a href="https://sbtc.leishen.work" target="_blank" class="eco-card">
+          <div>
+            <div class="eco-header">
+              <span style="font-size:24px;">🔍</span>
+              <h4>官方区块链浏览器</h4>
+            </div>
+            <div class="eco-desc">查询全网每一个区块、每一笔交易及个人矿工地址余额。</div>
+          </div>
+          <div class="eco-link">立即查询 ↗</div>
+        </a>
+
+        <a href="https://sbtc.leishen.work/faucet" target="_blank" class="eco-card">
+          <div>
+            <div class="eco-header">
+              <span style="font-size:24px;">🚰</span>
+              <h4>主网在线水龙头</h4>
+            </div>
+            <div class="eco-desc">输入你的 SBTC 地址，每 24 小时可免费领取测试注资体验转账。</div>
+          </div>
+          <div class="eco-link">免费领币 ↗</div>
+        </a>
+
+        <a href="https://github.com/jxsite/sbtc/releases" target="_blank" class="eco-card">
+          <div>
+            <div class="eco-header">
+              <span style="font-size:24px;">📦</span>
+              <h4>GitHub Releases 下载</h4>
+            </div>
+            <div class="eco-desc">下载最新编译好的 Windows 一键包，附带 SHA256 官方防篡改校验。</div>
+          </div>
+          <div class="eco-link">前往下载 ↗</div>
+        </a>
+
+        <a href="https://github.com/jxsite/sbtc" target="_blank" class="eco-card">
+          <div>
+            <div class="eco-header">
+              <span style="font-size:24px;">🐙</span>
+              <h4>GitHub 开源仓库</h4>
+            </div>
+            <div class="eco-desc">查看完整 C++ 节点底层代码、编译脚本与创世块参数计算文档。</div>
+          </div>
+          <div class="eco-link">查看源码 ↗</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 10px;">
+        <strong>SBTC Core</strong> · An open-source, Bitcoin-compatible independent Layer 1 blockchain
+      </p>
+      <p>
+        遵循 MIT 开源协议 · 自由、平等、去中心化 · <a href="https://github.com/jxsite/sbtc" target="_blank">GitHub Repository</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
