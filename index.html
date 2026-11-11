@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SBTC · 重走中本聪之路 | 属于普通人的比特币像素挖矿新纪元</title>
-  <meta name="description" content="1:1 复刻比特币底层共识的独立 Layer 1 原生公链。零预挖、无私募，重返 2009 年一人一机 CPU 挖矿时代。">
-  <!-- Retro Pixel Font -->
+  <title>SBTC Core · Retracing Bitcoin's Mining Journey / 重走中本聪之路</title>
+  <meta name="description" content="1:1 authentic replica of Bitcoin Core v29.5 consensus. An independent Layer 1 native blockchain with 0 premine, 0 ICO, and accessible CPU mining for everyone.">
+  <!-- Retro Pixel Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@
       background-size: 100% 4px;
       z-index: 999;
       pointer-events: none;
-      opacity: 0.6;
+      opacity: 0.55;
     }
 
     .container {
@@ -63,21 +63,13 @@
       font-family: 'Press Start 2P', monospace;
       letter-spacing: -0.5px;
     }
-    .terminal-font {
-      font-family: 'VT323', ui-monospace, monospace;
-    }
 
-    /* Pixel button & card utility */
-    .pixel-box {
-      background: var(--pixel-card);
-      border: 3px solid #f7931a;
-      box-shadow: 6px 6px 0px var(--pixel-shadow);
-      position: relative;
-    }
+    /* Pixel utility */
     .pixel-box-subtle {
       background: var(--pixel-card);
       border: 2px solid var(--pixel-border);
       box-shadow: 4px 4px 0px var(--pixel-shadow);
+      transition: all 0.15s;
     }
     .pixel-box-subtle:hover {
       border-color: var(--btc-orange);
@@ -112,12 +104,12 @@
       height: 32px;
     }
     .logo-text {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
     }
     nav {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       align-items: center;
     }
     nav a {
@@ -127,12 +119,35 @@
       transition: color 0.15s;
     }
     nav a:hover { color: var(--btc-gold); }
+
+    /* Lang toggle button */
+    .btn-pixel-lang {
+      background: #21262d;
+      color: var(--term-cyan) !important;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px !important;
+      padding: 8px 12px;
+      border: 2px solid var(--term-cyan);
+      box-shadow: 3px 3px 0 #000;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.1s;
+    }
+    .btn-pixel-lang:hover {
+      background: #30363d;
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 #000;
+      color: #fff !important;
+    }
+
     .btn-pixel-nav {
       background: var(--btc-orange);
       color: #000 !important;
       font-family: 'Press Start 2P', monospace;
       font-size: 10px !important;
-      padding: 10px 14px;
+      padding: 9px 14px;
       border: 2px solid #fff;
       box-shadow: 3px 3px 0 #000;
       text-decoration: none;
@@ -147,7 +162,7 @@
 
     /* Hero Section */
     .hero {
-      padding: 80px 0 60px;
+      padding: 75px 0 50px;
       text-align: center;
     }
     .badge-mosaic {
@@ -161,7 +176,7 @@
       box-shadow: 4px 4px 0px rgba(0,0,0,0.8);
     }
     .hero h1 {
-      font-size: 38px;
+      font-size: 36px;
       line-height: 1.4;
       color: #fff;
       margin-bottom: 24px;
@@ -171,7 +186,7 @@
       color: var(--btc-gold);
     }
     .hero-lead {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--text-muted);
       max-width: 780px;
       margin: 0 auto 36px;
@@ -187,11 +202,11 @@
     /* Retro Pixel Buttons */
     .btn-pixel {
       font-family: 'Press Start 2P', monospace;
-      font-size: 12px;
+      font-size: 11px;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 16px 24px;
+      padding: 15px 22px;
       text-decoration: none;
       cursor: pointer;
       border: 3px solid #000;
@@ -226,7 +241,7 @@
       background: #05070a;
       border: 3px solid var(--term-green);
       box-shadow: 8px 8px 0px var(--pixel-shadow);
-      margin: 50px auto 20px;
+      margin: 45px auto 20px;
       max-width: 820px;
       text-align: left;
     }
@@ -241,7 +256,7 @@
       color: var(--term-green);
     }
     .terminal-body {
-      padding: 18px 20px;
+      padding: 16px 20px;
       font-family: 'VT323', Consolas, monospace;
       font-size: 20px;
       line-height: 1.5;
@@ -276,7 +291,7 @@
       box-shadow: 4px 4px 0px #000;
     }
     .stat-pixel-val {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--btc-gold);
       margin-bottom: 8px;
     }
@@ -292,7 +307,7 @@
       margin-bottom: 45px;
     }
     .section-header h2 {
-      font-size: 24px;
+      font-size: 22px;
       color: #fff;
       margin-bottom: 12px;
       display: inline-block;
@@ -312,7 +327,6 @@
     }
     .pixel-card {
       padding: 24px 20px;
-      transition: all 0.15s;
     }
     .pixel-icon-wrap {
       width: 48px;
@@ -327,9 +341,10 @@
       box-shadow: 3px 3px 0 #000;
     }
     .pixel-card h3 {
-      font-size: 14px;
+      font-size: 13px;
       color: #fff;
       margin-bottom: 12px;
+      line-height: 1.5;
     }
     .pixel-card p {
       font-size: 13px;
@@ -360,9 +375,10 @@
       font-weight: bold;
     }
     .step-box h3 {
-      font-size: 15px;
+      font-size: 14px;
       color: #fff;
       margin-bottom: 10px;
+      line-height: 1.4;
     }
     .step-box p {
       font-size: 13px;
@@ -397,7 +413,7 @@
       background: #000;
       color: var(--btc-gold);
       font-family: 'Press Start 2P', monospace;
-      font-size: 12px;
+      font-size: 11px;
     }
     .retro-table tr:hover td {
       background: rgba(247, 147, 26, 0.05);
@@ -421,7 +437,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.1s;
+      transition: all 0.15s;
     }
     .eco-btn:hover {
       border-color: var(--term-cyan);
@@ -429,7 +445,7 @@
       box-shadow: 6px 6px 0 #000;
     }
     .eco-btn h4 {
-      font-size: 13px;
+      font-size: 12px;
       color: #fff;
       margin-bottom: 8px;
       font-family: 'Press Start 2P', monospace;
@@ -441,7 +457,7 @@
     }
     .eco-btn span {
       color: var(--term-cyan);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: bold;
     }
 
@@ -458,11 +474,12 @@
     footer a:hover { text-decoration: underline; }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 22px; }
+      .hero h1 { font-size: 20px; }
       .stats-matrix { grid-template-columns: repeat(2, 1fr); }
       .stepper-wrap { grid-template-columns: 1fr; }
-      .btn-pixel { font-size: 10px; padding: 12px 16px; }
-      nav { display: none; }
+      .btn-pixel { font-size: 9px; padding: 12px 14px; }
+      nav a { display: none; }
+      .btn-pixel-lang, .btn-pixel-nav { display: inline-flex; }
     }
   </style>
 </head>
@@ -472,7 +489,6 @@
   <header>
     <div class="container nav-wrap">
       <a href="#" class="logo">
-        <!-- Pixel Art Bitcoin SVG -->
         <svg class="logo-coin" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="4" y="1" width="8" height="14" fill="#F7931A"/>
           <rect x="2" y="3" width="12" height="10" fill="#F7931A"/>
@@ -486,12 +502,16 @@
         <span class="pixel-font logo-text">SBTC CORE</span>
       </a>
       <nav>
-        <a href="#about">初心理念</a>
-        <a href="#quickstart">极速挖矿</a>
-        <a href="#specs">共识规则</a>
-        <a href="https://sbtc.leishen.work" target="_blank">区块链浏览器 ↗</a>
+        <a href="#about" data-i18n="nav_vision">初心理念</a>
+        <a href="#quickstart" data-i18n="nav_quickstart">极速挖矿</a>
+        <a href="#specs" data-i18n="nav_specs">共识规则</a>
+        <a href="https://sbtc.leishen.work" target="_blank" data-i18n="nav_explorer">区块链浏览器 ↗</a>
         <a href="https://github.com/jxsite/sbtc" target="_blank">GitHub ↗</a>
-        <a href="https://github.com/jxsite/sbtc/releases" class="btn-pixel-nav">下载挖矿包</a>
+        <!-- Language Switcher -->
+        <button id="langToggle" class="btn-pixel-lang" onclick="toggleLanguage()">
+          🌐 <span id="langBtnText">EN / 中文</span>
+        </button>
+        <a href="https://github.com/jxsite/sbtc/releases" class="btn-pixel-nav" data-i18n="nav_download">下载挖矿包</a>
       </nav>
     </div>
   </header>
@@ -499,28 +519,28 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <div class="badge-mosaic pixel-font">
+      <div class="badge-mosaic pixel-font" data-i18n="hero_badge">
         [ EST. 2009 CYCLING · PURE CPU POW · 0 PREMINE ]
       </div>
 
-      <h1 class="pixel-font">
+      <h1 class="pixel-font" data-i18n="hero_title">
         重走比特币<span>挖矿之路</span>
       </h1>
 
-      <p class="hero-lead">
+      <p class="hero-lead" data-i18n="hero_subtitle">
         <b>1:1 纯粹复刻 Bitcoin Core v29.5 经典共识</b><br>
         告别昂贵工业矿场与矿池垄断，初期放宽算力门槛（powLimit 冷启动）。<br>
         打开普通电脑 CPU，重温 2009 年人人都可亲手挖出创世区块的极客黄金时代！
       </p>
 
       <div>
-        <a href="https://github.com/jxsite/sbtc/releases" class="btn-pixel btn-pixel-gold">
+        <a href="https://github.com/jxsite/sbtc/releases" class="btn-pixel btn-pixel-gold" data-i18n="btn_download">
           <span>⛏️ 下载 Windows 一键挖矿包</span>
         </a>
-        <a href="https://sbtc.leishen.work" target="_blank" class="btn-pixel btn-pixel-dark">
+        <a href="https://sbtc.leishen.work" target="_blank" class="btn-pixel btn-pixel-dark" data-i18n="btn_explorer">
           <span>🔍 全网区块链浏览器</span>
         </a>
-        <a href="https://sbtc.leishen.work/faucet" target="_blank" class="btn-pixel btn-pixel-dark">
+        <a href="https://sbtc.leishen.work/faucet" target="_blank" class="btn-pixel btn-pixel-dark" data-i18n="btn_faucet">
           <span>🚰 水龙头测试币领取</span>
         </a>
       </div>
@@ -528,7 +548,7 @@
       <!-- Retro Terminal Output -->
       <div class="terminal-window">
         <div class="terminal-titlebar pixel-font">
-          <span>C:\SBTC\2-开始挖矿.BAT [CPU MINER V1.0]</span>
+          <span data-i18n="term_title">C:\SBTC\2-开始挖矿.BAT [CPU MINER V1.0]</span>
           <span>● ■ ▲</span>
         </div>
         <div class="terminal-body">
@@ -549,19 +569,19 @@
       <div class="stats-matrix">
         <div class="stat-pixel-box">
           <div class="stat-pixel-val pixel-font">21,000,000</div>
-          <div class="stat-pixel-lbl">总量上限 (恒定不变)</div>
+          <div class="stat-pixel-lbl" data-i18n="stat_supply">总量上限 (恒定不变)</div>
         </div>
         <div class="stat-pixel-box">
           <div class="stat-pixel-val pixel-font">50 SBTC</div>
-          <div class="stat-pixel-lbl">初始出块奖励 / 块</div>
+          <div class="stat-pixel-lbl" data-i18n="stat_reward">初始出块奖励 / 块</div>
         </div>
         <div class="stat-pixel-box">
           <div class="stat-pixel-val pixel-font">210,000</div>
-          <div class="stat-pixel-lbl">减半周期 (区块)</div>
+          <div class="stat-pixel-lbl" data-i18n="stat_halving">减半周期 (区块)</div>
         </div>
         <div class="stat-pixel-box">
           <div class="stat-pixel-val pixel-font">CPU READY</div>
-          <div class="stat-pixel-lbl">零门槛家用电脑开挖</div>
+          <div class="stat-pixel-lbl" data-i18n="stat_cpu">零门槛家用电脑开挖</div>
         </div>
       </div>
     </div>
@@ -571,39 +591,39 @@
   <section id="about" style="background: rgba(0,0,0,0.3);">
     <div class="container">
       <div class="section-header">
-        <h2 class="pixel-font">为什么选择加入 SBTC？</h2>
-        <p>让加密货币回归去中心化初心 —— 从中心化算力垄断回到平等的个人节点</p>
+        <h2 class="pixel-font" data-i18n="pillars_heading">为什么选择加入 SBTC？</h2>
+        <p data-i18n="pillars_subheading">让加密货币回归去中心化初心 —— 从中心化算力垄断回到平等的个人节点</p>
       </div>
 
       <div class="grid-4">
         <div class="pixel-box-subtle pixel-card">
           <div class="pixel-icon-wrap">🖥️</div>
-          <h3 class="pixel-font">一人一机 · CPU 即刻出块</h3>
-          <p>
+          <h3 class="pixel-font" data-i18n="card1_title">一人一机 · CPU 即刻出块</h3>
+          <p data-i18n="card1_desc">
             初期放宽难度门槛（powLimit 冷启动），普通笔记本或台式机几秒钟即可独立算出一个有效区块，重温亲身爆块的成就感。
           </p>
         </div>
 
         <div class="pixel-box-subtle pixel-card">
           <div class="pixel-icon-wrap">⚖️</div>
-          <h3 class="pixel-font">极致公平 · 零预挖无私募</h3>
-          <p>
+          <h3 class="pixel-font" data-i18n="card2_title">极致公平 · 零预挖无私募</h3>
+          <p data-i18n="card2_desc">
             没有项目方特权预留，没有 VC 早期折价筹码，没有基金会税收。每一个 SBTC 都是真真切切依靠 PoW 算力计算产出。
           </p>
         </div>
 
         <div class="pixel-box-subtle pixel-card">
           <div class="pixel-icon-wrap">🛡️</div>
-          <h3 class="pixel-font">原生主链 · 15年安全底座</h3>
-          <p>
+          <h3 class="pixel-font" data-i18n="card3_title">原生主链 · 15年安全底座</h3>
+          <p data-i18n="card3_desc">
             绝非任何公链上的 ERC20 代币合约。直接基于 Bitcoin Core v29.5 源码构建，自带独立创世块、P2P 网络与 UTXO 数据库。
           </p>
         </div>
 
         <div class="pixel-box-subtle pixel-card">
           <div class="pixel-icon-wrap">💎</div>
-          <h3 class="pixel-font">硬通缩 · 自适应难度调节</h3>
-          <p>
+          <h3 class="pixel-font" data-i18n="card4_title">硬通缩 · 自适应难度调节</h3>
+          <p data-i18n="card4_desc">
             遵循每 2016 块自适应难度调节和每 21 万块减半规则。随着挖矿人数与算力增加，早期筹码稀缺性与网络护城河将倍增。
           </p>
         </div>
@@ -615,30 +635,30 @@
   <section id="quickstart">
     <div class="container">
       <div class="section-header">
-        <h2 class="pixel-font">只需 3 步 · 1 分钟傻瓜式开挖</h2>
-        <p>专为新手打造的纯净 Windows 一键挖矿包，解压即用</p>
+        <h2 class="pixel-font" data-i18n="steps_heading">只需 3 步 · 1 分钟傻瓜式开挖</h2>
+        <p data-i18n="steps_subheading">专为新手打造的纯净 Windows 一键挖矿包，解压即用</p>
       </div>
 
       <div class="stepper-wrap">
         <div class="step-box">
           <div class="step-tag pixel-font">STEP 01</div>
-          <h3 class="pixel-font">下载解压安装包</h3>
-          <p>从官方 Releases 下载最新的 <strong>SBTC-Windows-v1-Fixed.zip</strong>，解压到任意文件夹（如 D:\SBTC）。</p>
-          <div class="step-cmd">解压即可 · 无需安装编译器</div>
+          <h3 class="pixel-font" data-i18n="step1_title">下载解压安装包</h3>
+          <p data-i18n="step1_desc">从官方 Releases 下载最新的 <strong>SBTC-Windows-v1-Fixed.zip</strong>，解压到任意文件夹（如 D:\SBTC）。</p>
+          <div class="step-cmd" data-i18n="step1_cmd">解压即可 · 无需安装编译器</div>
         </div>
 
         <div class="step-box">
           <div class="step-tag pixel-font">STEP 02</div>
-          <h3 class="pixel-font">双击启动挖矿脚本</h3>
-          <p>直接双击 <strong>2-开始挖矿.bat</strong>。程序会自动连上官方种子节点，并自动为你生成独一无二的矿工收款地址。</p>
-          <div class="step-cmd">双击运行: 2-开始挖矿.bat</div>
+          <h3 class="pixel-font" data-i18n="step2_title">双击启动挖矿脚本</h3>
+          <p data-i18n="step2_desc">直接双击 <strong>2-开始挖矿.bat</strong>。程序会自动连上官方种子节点，并自动为你生成独一无二的矿工收款地址。</p>
+          <div class="step-cmd" data-i18n="step2_cmd">双击运行: 2-开始挖矿.bat</div>
         </div>
 
         <div class="step-box">
           <div class="step-tag pixel-font">STEP 03</div>
-          <h3 class="pixel-font">全自动出块与入账</h3>
-          <p>黑框终端将实时打印挖到新块的提示。奖励满 100 个确认后，双击 <strong>1-打开钱包.bat</strong> 即可查看余额并自由转账！</p>
-          <div class="step-cmd">区块奖励: 50 SBTC / 块</div>
+          <h3 class="pixel-font" data-i18n="step3_title">全自动出块与入账</h3>
+          <p data-i18n="step3_desc">黑框终端将实时打印挖到新块的提示。奖励满 100 个确认后，双击 <strong>1-打开钱包.bat</strong> 即可查看余额并自由转账！</p>
+          <div class="step-cmd" data-i18n="step3_cmd">区块奖励: 50 SBTC / 块</div>
         </div>
       </div>
     </div>
@@ -648,64 +668,64 @@
   <section id="specs" style="background: rgba(0,0,0,0.3);">
     <div class="container">
       <div class="section-header">
-        <h2 class="pixel-font">底层共识技术规范</h2>
-        <p>1:1 严格对照 Bitcoin Core 规则体系</p>
+        <h2 class="pixel-font" data-i18n="specs_heading">底层共识技术规范</h2>
+        <p data-i18n="specs_subheading">1:1 严格对照 Bitcoin Core 规则体系</p>
       </div>
 
       <table class="retro-table">
         <thead>
           <tr>
-            <th>规范参数</th>
-            <th>SBTC 链上定版参数</th>
+            <th data-i18n="th_spec">规范参数</th>
+            <th data-i18n="th_val">SBTC 链上定版参数</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="param-name">基线源码版本</td>
+            <td class="param-name" data-i18n="spec_baseline">基线源码版本</td>
             <td class="param-val">Bitcoin Core v29.5 (Upstream Commit 16ca532c)</td>
           </tr>
           <tr>
-            <td class="param-name">共识算法</td>
+            <td class="param-name" data-i18n="spec_algo">共识算法</td>
             <td class="param-val">双 SHA-256 (SHA-256d Proof of Work)</td>
           </tr>
           <tr>
-            <td class="param-name">主网恒定总量</td>
+            <td class="param-name" data-i18n="spec_supply">主网恒定总量</td>
             <td class="param-val">21,000,000 SBTC (2100 万枚)</td>
           </tr>
           <tr>
-            <td class="param-name">初始区块奖励</td>
+            <td class="param-name" data-i18n="spec_reward">初始区块奖励</td>
             <td class="param-val">50.00000000 SBTC / 块</td>
           </tr>
           <tr>
-            <td class="param-name">减半周期</td>
-            <td class="param-val">每 210,000 区块 (约 4 年减半一次)</td>
+            <td class="param-name" data-i18n="spec_halving">减半周期</td>
+            <td class="param-val" data-i18n="spec_halving_val">每 210,000 区块 (约 4 年减半一次)</td>
           </tr>
           <tr>
-            <td class="param-name">难度调整周期</td>
-            <td class="param-val">每 2016 区块 (自适应目标 10 分钟出块)</td>
+            <td class="param-name" data-i18n="spec_diff">难度调整周期</td>
+            <td class="param-val" data-i18n="spec_diff_val">每 2016 区块 (自适应目标 10 分钟出块)</td>
           </tr>
           <tr>
-            <td class="param-name">Coinbase 奖励成熟期</td>
-            <td class="param-val">100 个区块确认</td>
+            <td class="param-name" data-i18n="spec_maturity">Coinbase 奖励成熟期</td>
+            <td class="param-val" data-i18n="spec_maturity_val">100 个区块确认</td>
           </tr>
           <tr>
-            <td class="param-name">P2P 网络监听端口</td>
+            <td class="param-name" data-i18n="spec_p2p">P2P 网络监听端口</td>
             <td class="param-val">29333 (避开 BTC 8333 端口)</td>
           </tr>
           <tr>
-            <td class="param-name">RPC 通信端口</td>
+            <td class="param-name" data-i18n="spec_rpc">RPC 通信端口</td>
             <td class="param-val">29332</td>
           </tr>
           <tr>
-            <td class="param-name">原生 SegWit 地址前缀</td>
+            <td class="param-name" data-i18n="spec_segwit">原生 SegWit 地址前缀</td>
             <td class="param-val">sbtc1... (Bech32 原生隔离见证)</td>
           </tr>
           <tr>
-            <td class="param-name">传统 Base58 地址前缀</td>
+            <td class="param-name" data-i18n="spec_base58">传统 Base58 地址前缀</td>
             <td class="param-val">S... (P2PKH 前缀字节 63)</td>
           </tr>
           <tr>
-            <td class="param-name">创世区块哈希 (Genesis Hash)</td>
+            <td class="param-name" data-i18n="spec_genesis">创世区块哈希 (Genesis Hash)</td>
             <td class="param-val">7e1b06f27931f03323b009995fba5dbb35fc5c8584a12880a2a51e1db81ecfd9</td>
           </tr>
         </tbody>
@@ -717,41 +737,41 @@
   <section>
     <div class="container">
       <div class="section-header">
-        <h2 class="pixel-font">链上工具与生态入口</h2>
-        <p>透明可查，原生基础设施已全面就绪</p>
+        <h2 class="pixel-font" data-i18n="eco_heading">链上工具与生态入口</h2>
+        <p data-i18n="eco_subheading">透明可查，原生基础设施已全面就绪</p>
       </div>
 
       <div class="eco-list">
         <a href="https://sbtc.leishen.work" target="_blank" class="eco-btn">
           <div>
-            <h4>🔍 区块浏览器</h4>
-            <p>实时查询全网每一个区块、每一笔交易及矿工地址余额。</p>
+            <h4 data-i18n="eco1_title">🔍 区块浏览器</h4>
+            <p data-i18n="eco1_desc">实时查询全网每一个区块、每一笔交易及矿工地址余额。</p>
           </div>
-          <span class="pixel-font">[ 立即查询 ↗ ]</span>
+          <span class="pixel-font" data-i18n="eco1_btn">[ 立即查询 ↗ ]</span>
         </a>
 
         <a href="https://sbtc.leishen.work/faucet" target="_blank" class="eco-btn">
           <div>
-            <h4>🚰 在线水龙头</h4>
-            <p>输入你的 sbtc 地址，每 24 小时可免费领取测试币体验转账。</p>
+            <h4 data-i18n="eco2_title">🚰 在线水龙头</h4>
+            <p data-i18n="eco2_desc">输入你的 sbtc 地址，每 24 小时可免费领取测试币体验转账。</p>
           </div>
-          <span class="pixel-font">[ 免费领币 ↗ ]</span>
+          <span class="pixel-font" data-i18n="eco2_btn">[ 免费领币 ↗ ]</span>
         </a>
 
         <a href="https://github.com/jxsite/sbtc/releases" target="_blank" class="eco-btn">
           <div>
-            <h4>📦 RELEASES 下载</h4>
-            <p>下载官方 Windows 一键挖矿包，附带 SHA256 官方校验。</p>
+            <h4 data-i18n="eco3_title">📦 RELEASES 下载</h4>
+            <p data-i18n="eco3_desc">下载官方 Windows 一键挖矿包，附带 SHA256 官方校验。</p>
           </div>
-          <span class="pixel-font">[ 前往下载 ↗ ]</span>
+          <span class="pixel-font" data-i18n="eco3_btn">[ 前往下载 ↗ ]</span>
         </a>
 
         <a href="https://github.com/jxsite/sbtc" target="_blank" class="eco-btn">
           <div>
-            <h4>🐙 GITHUB 源码</h4>
-            <p>查看完整 C++ 节点底层代码、编译脚本与创世参数计算。</p>
+            <h4 data-i18n="eco4_title">🐙 GITHUB 源码</h4>
+            <p data-i18n="eco4_desc">查看完整 C++ 节点底层代码、编译脚本与创世参数计算。</p>
           </div>
-          <span class="pixel-font">[ 查看源码 ↗ ]</span>
+          <span class="pixel-font" data-i18n="eco4_btn">[ 查看源码 ↗ ]</span>
         </a>
       </div>
     </div>
@@ -760,7 +780,6 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <!-- Pixel Pickaxe SVG -->
       <div style="margin-bottom: 14px;">
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;">
           <rect x="7" y="1" width="8" height="2" fill="#F7931A"/>
@@ -776,11 +795,191 @@
       <p style="margin-bottom: 8px;">
         <strong class="pixel-font" style="color:var(--btc-gold);">SBTC CORE</strong> · An open-source, Bitcoin-compatible independent Layer 1 blockchain
       </p>
-      <p>
+      <p data-i18n="footer_license">
         遵循 MIT 开源协议 · 自由、平等、去中心化 · <a href="https://github.com/jxsite/sbtc" target="_blank">GitHub Repository</a>
       </p>
     </div>
   </footer>
+
+  <!-- Bilingual Translation Dictionary & Toggle Logic -->
+  <script>
+    const translations = {
+      zh: {
+        nav_vision: "初心理念",
+        nav_quickstart: "极速挖矿",
+        nav_specs: "共识规则",
+        nav_explorer: "区块链浏览器 ↗",
+        nav_download: "下载挖矿包",
+        lang_btn: "English",
+        hero_badge: "[ 2009 初心再启 · 纯粹 CPU POW · 0 预挖 ]",
+        hero_title: "重走比特币<span>挖矿之路</span>",
+        hero_subtitle: "<b>1:1 纯粹复刻 Bitcoin Core v29.5 经典共识</b><br>告别昂贵工业矿场与矿池垄断，初期放宽算力门槛（powLimit 冷启动）。<br>打开普通电脑 CPU，重温 2009 年人人都可亲手挖出创世区块的极客黄金时代！",
+        btn_download: "⛏️ 下载 Windows 一键挖矿包",
+        btn_explorer: "🔍 全网区块链浏览器",
+        btn_faucet: "🚰 水龙头测试币领取",
+        term_title: "C:\\SBTC\\2-开始挖矿.BAT [CPU MINER V1.0]",
+        stat_supply: "总量上限 (恒定不变)",
+        stat_reward: "初始出块奖励 / 块",
+        stat_halving: "减半周期 (区块)",
+        stat_cpu: "零门槛家用电脑开挖",
+        pillars_heading: "为什么选择加入 SBTC？",
+        pillars_subheading: "让加密货币回归去中心化初心 —— 从中心化算力垄断回到平等的个人节点",
+        card1_title: "一人一机 · CPU 即刻出块",
+        card1_desc: "初期放宽难度门槛（powLimit 冷启动），普通笔记本或台式机几秒钟即可独立算出一个有效区块，重温亲身爆块的成就感。",
+        card2_title: "极致公平 · 零预挖无私募",
+        card2_desc: "没有项目方特权预留，没有 VC 早期折价筹码，没有基金会税收。每一个 SBTC 都是真真切切依靠 PoW 算力计算产出。",
+        card3_title: "原生主链 · 15年安全底座",
+        card3_desc: "绝非任何公链上的 ERC20 代币合约。直接基于 Bitcoin Core v29.5 源码构建，自带独立创世块、P2P 网络与 UTXO 数据库。",
+        card4_title: "硬通缩 · 自适应难度调节",
+        card4_desc: "遵循每 2016 块自适应难度调节和每 21 万块减半规则。随着挖矿人数与算力增加，早期筹码稀缺性与网络护城河将倍增。",
+        steps_heading: "只需 3 步 · 1 分钟傻瓜式开挖",
+        steps_subheading: "专为新手打造的纯净 Windows 一键挖矿包，解压即用",
+        step1_title: "下载解压安装包",
+        step1_desc: "从官方 Releases 下载最新的 <strong>SBTC-Windows-v1-Fixed.zip</strong>，解压到任意文件夹（如 D:\\SBTC）。",
+        step1_cmd: "解压即可 · 无需安装编译器",
+        step2_title: "双击启动挖矿脚本",
+        step2_desc: "直接双击 <strong>2-开始挖矿.bat</strong>。程序会自动连上官方种子节点，并自动为你生成独一无二的矿工收款地址。",
+        step2_cmd: "双击运行: 2-开始挖矿.bat",
+        step3_title: "全自动出块与入账",
+        step3_desc: "黑框终端将实时打印挖到新块的提示。奖励满 100 个确认后，双击 <strong>1-打开钱包.bat</strong> 即可查看余额并自由转账！",
+        step3_cmd: "区块奖励: 50 SBTC / 块",
+        specs_heading: "底层共识技术规范",
+        specs_subheading: "1:1 严格对照 Bitcoin Core 规则体系",
+        th_spec: "规范参数",
+        th_val: "SBTC 链上定版参数",
+        spec_baseline: "基线源码版本",
+        spec_algo: "共识算法",
+        spec_supply: "主网恒定总量",
+        spec_reward: "初始区块奖励",
+        spec_halving: "减半周期",
+        spec_halving_val: "每 210,000 区块 (约 4 年减半一次)",
+        spec_diff: "难度调整周期",
+        spec_diff_val: "每 2016 区块 (自适应目标 10 分钟出块)",
+        spec_maturity: "Coinbase 奖励成熟期",
+        spec_maturity_val: "100 个区块确认",
+        spec_p2p: "P2P 网络监听端口",
+        spec_rpc: "RPC 通信端口",
+        spec_segwit: "原生 SegWit 地址前缀",
+        spec_base58: "传统 Base58 地址前缀",
+        spec_genesis: "创世区块哈希 (Genesis Hash)",
+        eco_heading: "链上工具与生态入口",
+        eco_subheading: "透明可查，原生基础设施已全面就绪",
+        eco1_title: "🔍 区块浏览器",
+        eco1_desc: "实时查询全网每一个区块、每一笔交易及矿工地址余额。",
+        eco1_btn: "[ 立即查询 ↗ ]",
+        eco2_title: "🚰 在线水龙头",
+        eco2_desc: "输入你的 sbtc 地址，每 24 小时可免费领取测试币体验转账。",
+        eco2_btn: "[ 免费领币 ↗ ]",
+        eco3_title: "📦 RELEASES 下载",
+        eco3_desc: "下载官方 Windows 一键挖矿包，附带 SHA256 官方校验。",
+        eco3_btn: "[ 前往下载 ↗ ]",
+        eco4_title: "🐙 GITHUB 源码",
+        eco4_desc: "查看完整 C++ 节点底层代码、编译脚本与创世参数计算。",
+        eco4_btn: "[ 查看源码 ↗ ]",
+        footer_license: "遵循 MIT 开源协议 · 自由、平等、去中心化 · <a href=\"https://github.com/jxsite/sbtc\" target=\"_blank\">GitHub Repository</a>"
+      },
+      en: {
+        nav_vision: "Genesis Vision",
+        nav_quickstart: "Quick Start",
+        nav_specs: "Specifications",
+        nav_explorer: "Explorer ↗",
+        nav_download: "Download Miner",
+        lang_btn: "中文版",
+        hero_badge: "[ EST. 2009 CYCLING · PURE CPU POW · 0 PREMINE ]",
+        hero_title: "RETRACE BITCOIN <span>MINING</span>",
+        hero_subtitle: "<b>1:1 Authentic Replica of Bitcoin Core v29.5 Consensus</b><br>Say goodbye to industrial ASIC monopolies and mining pool taxes. Relaxed cold-start threshold (powLimit).<br>Fire up your personal computer CPU and relive the 2009 golden era when anyone could mine their own blocks!",
+        btn_download: "⛏️ Download Windows 1-Click Package",
+        btn_explorer: "🔍 Blockchain Explorer",
+        btn_faucet: "🚰 Free Test Faucet",
+        term_title: "C:\\SBTC\\2-开始挖矿.BAT [CPU MINER V1.0]",
+        stat_supply: "Max Supply (Hard Cap)",
+        stat_reward: "Initial Block Reward",
+        stat_halving: "Halving Interval (Blocks)",
+        stat_cpu: "Zero-Threshold CPU Mining",
+        pillars_heading: "WHY PARTICIPATE IN SBTC?",
+        pillars_subheading: "Returning crypto to its cypherpunk roots — from centralized mining cartels back to equal peer nodes",
+        card1_title: "ONE CPU, ONE VOTE · INSTANT PC MINING",
+        card1_desc: "With a relaxed initial powLimit, any standard laptop or PC can calculate valid blocks within seconds. Experience the true thrill of mining solo blocks.",
+        card2_title: "PURE FAIRNESS · ZERO PREMINE, ZERO ICO",
+        card2_desc: "No founder pre-mine, no private VC discounts, no foundation tax. Every single SBTC is minted purely through Proof of Work computation.",
+        card3_title: "NATIVE LAYER 1 · 15 YEARS OF SECURITY",
+        card3_desc: "Not an ERC-20 smart contract token. Built directly on Bitcoin Core v29.5 with its own genesis block, independent P2P network, and UTXO engine.",
+        card4_title: "HARD MONEY · ADAPTIVE DIFFICULTY",
+        card4_desc: "Preserves the 2,016-block difficulty retargeting and 210,000-block halving rules. Early scarcity and network security compound as participation grows.",
+        steps_heading: "ONLY 3 STEPS · START IN 1 MINUTE",
+        steps_subheading: "Pure Windows 1-Click Package designed for zero-friction mining",
+        step1_title: "DOWNLOAD & UNPACK",
+        step1_desc: "Download the verified <strong>SBTC-Windows-v1-Fixed.zip</strong> from GitHub Releases and extract it to any folder (e.g., D:\\SBTC).",
+        step1_cmd: "Unpack & Run · No build tools required",
+        step2_title: "LAUNCH MINING SCRIPT",
+        step2_desc: "Double-click <strong>2-开始挖矿.bat</strong>. The node automatically connects to public seeds and generates your unique miner address.",
+        step2_cmd: "Execute: 2-开始挖矿.bat",
+        step3_title: "MINE BLOCKS & GET REWARDS",
+        step3_desc: "The terminal displays mined block heights and 50 SBTC reward alerts in real time. After 100 confirmations, open <strong>1-打开钱包.bat</strong> to spend!",
+        step3_cmd: "Block Reward: 50 SBTC / block",
+        specs_heading: "TECHNICAL SPECIFICATIONS",
+        specs_subheading: "1:1 canonical Bitcoin Core consensus parameters",
+        th_spec: "SPECIFICATION",
+        th_val: "SBTC ON-CHAIN PARAMETER",
+        spec_baseline: "Baseline Version",
+        spec_algo: "Consensus Algorithm",
+        spec_supply: "Max Total Supply",
+        spec_reward: "Initial Block Reward",
+        spec_halving: "Halving Interval",
+        spec_halving_val: "Every 210,000 blocks (~4 years)",
+        spec_diff: "Difficulty Adjustment",
+        spec_diff_val: "Every 2,016 blocks (10-minute target pace)",
+        spec_maturity: "Coinbase Maturity",
+        spec_maturity_val: "100 block confirmations",
+        spec_p2p: "P2P Network Port",
+        spec_rpc: "RPC Service Port",
+        spec_segwit: "Native SegWit Prefix",
+        spec_base58: "Legacy Base58 Prefix",
+        spec_genesis: "Genesis Block Hash",
+        eco_heading: "ON-CHAIN ECOSYSTEM & TOOLS",
+        eco_subheading: "Transparent, decentralized, and live on mainnet",
+        eco1_title: "🔍 BLOCK EXPLORER",
+        eco1_desc: "Inspect real-time blocks, transactions, and miner address balances.",
+        eco1_btn: "[ LAUNCH EXPLORER ↗ ]",
+        eco2_title: "🚰 ONLINE FAUCET",
+        eco2_desc: "Claim testnet-free coins every 24 hours to test on-chain transfers.",
+        eco2_btn: "[ CLAIM FAUCET ↗ ]",
+        eco3_title: "📦 GITHUB RELEASES",
+        eco3_desc: "Download precompiled Windows binaries with official SHA256 checksums.",
+        eco3_btn: "[ DOWNLOADS ↗ ]",
+        eco4_title: "🐙 GITHUB SOURCE",
+        eco4_desc: "Inspect full C++ node codebase, build scripts, and genesis parameters.",
+        eco4_btn: "[ VIEW REPO ↗ ]",
+        footer_license: "Distributed under the MIT License · Free, Equal, Decentralized · <a href=\"https://github.com/jxsite/sbtc\" target=\"_blank\">GitHub Repository</a>"
+      }
+    };
+
+    let currentLang = localStorage.getItem('sbtc_lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('sbtc_lang', lang);
+      document.documentElement.lang = (lang === 'zh' ? 'zh-CN' : 'en');
+      
+      const t = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+          el.innerHTML = t[key];
+        }
+      });
+      document.getElementById('langBtnText').textContent = t.lang_btn;
+    }
+
+    function toggleLanguage() {
+      applyLanguage(currentLang === 'zh' ? 'en' : 'zh');
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLanguage(currentLang);
+    });
+  </script>
 
 </body>
 </html>
