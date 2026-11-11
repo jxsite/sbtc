@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SBTC Core · Free Faucet 免费在线水龙头 · 领取 1 SBTC 真实代币</title>
+  <meta name="description" content="Official SBTC Faucet. Claim 1 real native Layer 1 SBTC token every 24 hours. Experience genuine Bitcoin peer-to-peer transfers and confirmations.">
+  <!-- Retro Pixel Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-darker: #07090d;
+      --btc-orange: #f7931a;
+      --btc-gold: #ffbe3b;
+      --term-green: #22c55e;
+      --term-cyan: #38bdf8;
+      --text-main: #e6edf3;
+      --text-muted: #8b949e;
+      --pixel-border: #30363d;
+      --pixel-card: #161b22;
+      --pixel-shadow: #010409;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; image-rendering: pixelated; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Courier New", monospace;
+      line-height: 1.6;
+      position: relative;
+      background-image: 
+        linear-gradient(rgba(247, 147, 26, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(247, 147, 26, 0.03) 1px, transparent 1px);
+      background-size: 24px 24px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Scanline effect */
+    body::before {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+      background-size: 100% 4px;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    /* Pixel typography */
+    .pixel-font {
+      font-family: 'Press Start 2P', monospace;
+      letter-spacing: -0.5px;
+    }
+
+    /* Pixel utility */
+    .pixel-box-subtle {
+      background: var(--pixel-card);
+      border: 2px solid var(--pixel-border);
+      box-shadow: 4px 4px 0px var(--pixel-shadow);
+      transition: all 0.15s;
+    }
+
+    /* Navbar */
+    header {
+      background: rgba(13, 17, 23, 0.95);
+      border-bottom: 3px solid var(--btc-orange);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--btc-orange);
+    }
+    .logo-coin {
+      width: 32px;
+      height: 32px;
+      image-rendering: pixelated;
+    }
+    .logo-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--btc-gold);
+      text-shadow: 2px 2px 0px #000;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    nav a:hover {
+      color: var(--btc-orange);
+    }
+
+    /* Buttons */
+    .btn-pixel-lang {
+      background: #21262d;
+      border: 2px solid var(--pixel-border);
+      color: var(--text-main);
+      padding: 6px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--pixel-shadow);
+      transition: all 0.1s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-pixel-lang:hover {
+      border-color: var(--btc-orange);
+      color: var(--btc-orange);
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px var(--pixel-shadow);
+    }
+    .btn-pixel-nav {
+      background: var(--btc-orange);
+      color: #000 !important;
+      font-weight: 700;
+      padding: 8px 16px;
+      border: 2px solid #000;
+      box-shadow: 3px 3px 0px #000;
+    }
+    .btn-pixel-nav:hover {
+      background: var(--btc-gold);
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px #000;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 48px 0 60px;
+    }
+
+    .badge-mosaic {
+      display: inline-block;
+      background: #21262d;
+      border: 2px solid var(--btc-orange);
+      color: var(--btc-gold);
+      padding: 8px 16px;
+      font-size: 12px;
+      margin-bottom: 24px;
+      box-shadow: 4px 4px 0px #000;
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.4;
+      margin-bottom: 18px;
+      color: #fff;
+      text-shadow: 3px 3px 0px #000;
+    }
+    h1 span {
+      color: var(--btc-orange);
+    }
+
+    .hero-lead {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 800px;
+      line-height: 1.8;
+    }
+
+    /* Faucet Card */
+    .faucet-box {
+      background: var(--pixel-card);
+      border: 3px solid var(--btc-orange);
+      box-shadow: 6px 6px 0px var(--pixel-shadow);
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+
+    .status-ribbon {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+      border-bottom: 2px dashed var(--pixel-border);
+      font-size: 14px;
+    }
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--term-green);
+      display: inline-block;
+      box-shadow: 0 0 8px var(--term-green);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--btc-gold);
+      font-size: 15px;
+    }
+
+    .pixel-input {
+      width: 100%;
+      background: var(--bg-darker);
+      border: 2px solid var(--pixel-border);
+      padding: 14px 18px;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: 0.5px;
+      outline: none;
+      transition: border-color 0.2s;
+      box-shadow: inset 2px 2px 0px #000;
+    }
+    .pixel-input:focus {
+      border-color: var(--btc-orange);
+    }
+    .pixel-input::placeholder {
+      color: #555e6d;
+    }
+
+    .btn-pixel-submit {
+      background: var(--btc-orange);
+      color: #000;
+      border: 3px solid #000;
+      padding: 14px 32px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 4px 4px 0px #000;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-pixel-submit:hover {
+      background: var(--btc-gold);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #000;
+    }
+    .btn-pixel-submit:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px #000;
+    }
+
+    .helper-text {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Donation & FAQ Boxes */
+    .pixel-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .info-card {
+      background: var(--pixel-card);
+      border: 2px solid var(--pixel-border);
+      box-shadow: 4px 4px 0px var(--pixel-shadow);
+      padding: 24px;
+    }
+    .info-card h3 {
+      font-size: 16px;
+      color: var(--btc-gold);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .info-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .donate-addr-wrap {
+      background: var(--bg-darker);
+      border: 2px dashed var(--pixel-border);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .donate-addr {
+      font-family: 'VT323', monospace;
+      font-size: 18px;
+      color: var(--term-green);
+      word-break: break-all;
+    }
+    .btn-copy {
+      background: #21262d;
+      border: 1px solid var(--pixel-border);
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 10px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-copy:hover {
+      border-color: var(--btc-orange);
+      color: var(--btc-orange);
+    }
+
+    /* FAQ accordion / list */
+    .faq-item {
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--pixel-border);
+      padding-bottom: 14px;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .faq-q {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .faq-a {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 2px solid var(--pixel-border);
+      background: var(--bg-darker);
+      padding: 30px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--btc-orange); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .pixel-grid-2 { grid-template-columns: 1fr; }
+      h1 { font-size: 20px; }
+      .faucet-box { padding: 20px; }
+      nav a { display: none; }
+      .btn-pixel-lang, .btn-pixel-nav { display: inline-flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Retro Navigation -->
+  <header>
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo">
+        <svg class="logo-coin" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="1" width="8" height="14" fill="#F7931A"/>
+          <rect x="2" y="3" width="12" height="10" fill="#F7931A"/>
+          <rect x="1" y="4" width="14" height="8" fill="#F7931A"/>
+          <rect x="3" y="3" width="10" height="10" fill="#FFBE3B"/>
+          <rect x="6" y="4" width="4" height="2" fill="#000"/>
+          <rect x="6" y="6" width="5" height="4" fill="#000"/>
+          <rect x="6" y="10" width="4" height="2" fill="#000"/>
+          <rect x="7" y="5" width="2" height="6" fill="#FFBE3B"/>
+        </svg>
+        <span class="pixel-font logo-text">SBTC CORE</span>
+      </a>
+      <nav>
+        <a href="index.html" data-i18n="nav_home">首页</a>
+        <a href="index.html#about" data-i18n="nav_vision">初心理念</a>
+        <a href="index.html#quickstart" data-i18n="nav_quickstart">极速挖矿</a>
+        <a href="index.html#specs" data-i18n="nav_specs">共识规则</a>
+        <a href="https://sbtc.leishen.work" target="_blank" data-i18n="nav_explorer">区块链浏览器 ↗</a>
+        <a href="https://github.com/jxsite/sbtc" target="_blank">GitHub ↗</a>
+        <!-- Language Switcher -->
+        <button id="langToggle" class="btn-pixel-lang" onclick="toggleLanguage()">
+          🌐 <span id="langBtnText">English</span>
+        </button>
+        <a href="https://github.com/jxsite/sbtc/releases" class="btn-pixel-nav" data-i18n="nav_download">下载挖矿包</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Section -->
+  <main>
+    <div class="container">
+      <div class="badge-mosaic pixel-font" data-i18n="faucet_badge">
+        [ SATOSHI DISPENSER · 100% REAL L1 SBTC · 0 PREMINE ]
+      </div>
+
+      <h1 class="pixel-font" data-i18n="faucet_title">
+        SBTC <span>免费在线水龙头</span>
+      </h1>
+
+      <p class="hero-lead" data-i18n="faucet_subtitle">
+        无需矿机，输入你的 SBTC 原生地址即可免费领取 1 枚主网代币。<br>
+        这是实实在在运行在 SBTC 独立原生主链上的资产，即刻在钱包体验真实的去中心化转账与区块确认！
+      </p>
+
+      <!-- Faucet Claim Box -->
+      <div class="faucet-box">
+        <div class="status-ribbon">
+          <div class="status-item">
+            <span class="status-dot"></span>
+            <span data-i18n="stat_status">服务状态：<strong>正常开放 (ONLINE)</strong></span>
+          </div>
+          <div class="status-item">
+            <span data-i18n="stat_amount">单次领币：<strong>1.00000000 SBTC</strong></span>
+          </div>
+          <div class="status-item">
+            <span data-i18n="stat_limit">限制规则：<strong>每地址/IP 24小时限领 1 次</strong></span>
+          </div>
+          <div class="status-item">
+            <span data-i18n="stat_confirm">确认耗时：<strong>下一个区块生成即到账</strong></span>
+          </div>
+        </div>
+
+        <form action="https://sbtc.leishen.work/faucet/claim" method="POST" target="_blank" id="claimForm">
+          <div class="form-group">
+            <label class="form-label" data-i18n="form_label">接收地址 (Your SBTC Address):</label>
+            <input 
+              type="text" 
+              name="address" 
+              id="claimAddress" 
+              required 
+              placeholder="粘贴你的 SBTC 原生地址，如 sbtc1q9awpc6l2n8wemv8xu3puszknpuvmjtqwqa6lyp" 
+              class="pixel-input"
+            >
+          </div>
+
+          <button type="submit" class="btn-pixel-submit">
+            <span>🚰 <span data-i18n="btn_claim_now">立即免费领取 1 SBTC</span></span>
+          </button>
+
+          <p class="helper-text" data-i18n="form_helper">
+            * 提示：如果还没有地址，请运行挖矿包中的 <strong>1-打开钱包.bat</strong> 获取，或直接使用 <strong>2-开始挖矿.bat</strong> 自动生成的矿工地址。点击领取后将由后台主网节点执行链上转账并自动广播。
+          </p>
+        </form>
+      </div>
+
+      <!-- 2 Columns: Fund the faucet & FAQ -->
+      <div class="pixel-grid-2">
+        <!-- Fund Faucet -->
+        <div class="info-card">
+          <h3 class="pixel-font" data-i18n="fund_title">🤝 给水龙头注资</h3>
+          <p data-i18n="fund_desc">
+            挖矿丰收的大矿工们，欢迎将闲置的 SBTC 捐助回水龙头地址！每一个捐出的代币都将作为火种免费分发给新加入的矿工，让去中心化的生态生生不息。
+          </p>
+          <div class="donate-addr-wrap">
+            <span class="donate-addr" id="donateAddr">sbtc1qdvpnzrkjafu73svy47ykhankf4z9fv6k57utvy</span>
+            <button class="btn-copy" onclick="copyDonateAddr()" data-i18n="btn_copy">复制地址</button>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="info-card">
+          <h3 class="pixel-font" data-i18n="faq_title">💡 常见问题解答</h3>
+          
+          <div class="faq-item">
+            <div class="faq-q" data-i18n="faq1_q">Q1: 这是测试网玩具币吗？</div>
+            <div class="faq-a" data-i18n="faq1_a">A: 绝对不是！SBTC 是独立的 Layer 1 原生主链，水龙头发放的是与 CPU 挖矿爆块完全同等效力的真正 SBTC。</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q" data-i18n="faq2_q">Q2: 点击后多久能在钱包查看到账？</div>
+            <div class="faq-a" data-i18n="faq2_a">A: 提交后后台节点会立即生成链上 UTXO 交易并广播。等全网矿工挖出下一个区块后，你的客户端即可收到。</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q" data-i18n="faq3_q">Q3: 怎样查询我的转账状态？</div>
+            <div class="faq-a" data-i18n="faq3_a">A: 可在 <a href="https://sbtc.leishen.work" target="_blank" style="color:var(--btc-orange)">全网区块链浏览器</a> 输入你的地址或交易哈希进行透明查询。</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 8px;">
+        <span class="pixel-font" style="color: var(--btc-gold);">SBTC CORE</span> · 
+        <span data-i18n="footer_slogan">让加密货币重回 CPU 算力平等的黄金时代</span>
+      </p>
+      <p data-i18n="footer_license">
+        遵循 MIT 开源协议 · 自由、平等、去中心化 · <a href="https://github.com/jxsite/sbtc" target="_blank">GitHub Repository</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bilingual Script -->
+  <script>
+    const translations = {
+      zh: {
+        nav_home: "首页",
+        nav_vision: "初心理念",
+        nav_quickstart: "极速挖矿",
+        nav_specs: "共识规则",
+        nav_explorer: "区块链浏览器 ↗",
+        nav_download: "下载挖矿包",
+        lang_btn: "English",
+        faucet_badge: "[ 2009 水龙头再现 · 100% 真实原生 SBTC · 0 预挖 ]",
+        faucet_title: "SBTC <span>免费在线水龙头</span>",
+        faucet_subtitle: "无需专用矿机，输入你的 SBTC 原生地址即可免费领取 1 枚主网代币。<br>这是实实在在运行在 SBTC 独立原生主链上的资产，即刻在钱包体验真实的去中心化转账与区块确认！",
+        stat_status: "服务状态：<strong>正常开放 (ONLINE)</strong>",
+        stat_amount: "单次领币：<strong>1.00000000 SBTC</strong>",
+        stat_limit: "限制规则：<strong>每地址/IP 24小时限领 1 次</strong>",
+        stat_confirm: "确认耗时：<strong>下一个区块生成即到账</strong>",
+        form_label: "接收地址 (Your SBTC Address):",
+        btn_claim_now: "立即免费领取 1 SBTC",
+        form_helper: "* 提示：如果还没有地址，请运行挖矿包中的 <strong>1-打开钱包.bat</strong> 获取，或直接使用 <strong>2-开始挖矿.bat</strong> 自动生成的矿工地址。点击领取后将由后台主网节点执行链上转账并自动广播。",
+        fund_title: "🤝 给水龙头注资",
+        fund_desc: "挖矿丰收的大矿工们，欢迎将闲置的 SBTC 捐助回水龙头地址！每一个捐出的代币都将作为火种免费分发给新加入的矿工，让去中心化的生态生生不息。",
+        btn_copy: "复制地址",
+        faq_title: "💡 常见问题解答",
+        faq1_q: "Q1: 这是测试网玩具币吗？",
+        faq1_a: "A: 绝对不是！SBTC 是独立的 Layer 1 原生主链，水龙头发放的是与 CPU 挖矿爆块完全同等效力的真正 SBTC。",
+        faq2_q: "Q2: 点击后多久能在钱包查看到账？",
+        faq2_a: "A: 提交后后台节点会立即生成链上 UTXO 交易并广播。等全网矿工挖出下一个区块后，你的客户端即可收到。",
+        faq3_q: "Q3: 怎样查询我的转账状态？",
+        faq3_a: "A: 可在 <a href='https://sbtc.leishen.work' target='_blank' style='color:var(--btc-orange)'>全网区块链浏览器</a> 输入你的地址或交易哈希进行透明查询。",
+        footer_slogan: "让加密货币重回 CPU 算力平等的黄金时代",
+        footer_license: "遵循 MIT 开源协议 · 自由、平等、去中心化 · <a href='https://github.com/jxsite/sbtc' target='_blank'>GitHub Repository</a>"
+      },
+      en: {
+        nav_home: "Home",
+        nav_vision: "Vision",
+        nav_quickstart: "Quickstart",
+        nav_specs: "Consensus Specs",
+        nav_explorer: "Block Explorer ↗",
+        nav_download: "Downloads",
+        lang_btn: "中文",
+        faucet_badge: "[ SATOSHI DISPENSER · 100% REAL L1 SBTC · 0 PREMINE ]",
+        faucet_title: "SBTC <span>FREE ONLINE FAUCET</span>",
+        faucet_subtitle: "No mining rig required. Enter your SBTC native address to claim 1 real Layer 1 mainnet coin.<br>Experience genuine decentralized peer-to-peer transfers and block confirmations right in your wallet!",
+        stat_status: "Status: <strong>ONLINE & DISPENSING</strong>",
+        stat_amount: "Claim Amount: <strong>1.00000000 SBTC</strong>",
+        stat_limit: "Rate Limit: <strong>1 claim per address / IP per 24 hours</strong>",
+        stat_confirm: "Settlement: <strong>Arrives upon next block confirmation</strong>",
+        form_label: "Recipient Address (Your SBTC Address):",
+        btn_claim_now: "Claim 1 Free SBTC Now",
+        form_helper: "* Tip: If you don't have an address yet, launch <strong>1-打开钱包.bat</strong> or copy the miner address generated by <strong>2-开始挖矿.bat</strong>. Transfers are signed and broadcast directly by seed nodes.",
+        fund_title: "🤝 Fund the Community Faucet",
+        fund_desc: "Miners who struck rich during early CPU mining: you are warmly invited to donate extra SBTC back to this community dispenser to support newcomers!",
+        btn_copy: "Copy Address",
+        faq_title: "💡 FREQUENTLY ASKED QUESTIONS",
+        faq1_q: "Q1: Is this a testnet fake coin?",
+        faq1_a: "A: Absolutely not! SBTC is an independent Layer 1 native mainnet. The faucet dispenses authentic SBTC identical to coins mined via CPU Proof of Work.",
+        faq2_q: "Q2: How fast do funds arrive in my wallet?",
+        faq2_a: "A: The faucet node immediately signs a UTXO transaction and broadcasts it to the P2P mempool. As soon as a miner mines the next block, it appears in your wallet.",
+        faq3_q: "Q3: How do I verify my transfer?",
+        faq3_a: "A: Query your address or transaction hash anytime on the <a href='https://sbtc.leishen.work' target='_blank' style='color:var(--btc-orange)'>Blockchain Explorer</a>.",
+        footer_slogan: "Returning cryptocurrency to the golden era of CPU equality",
+        footer_license: "Distributed under the MIT License · Free, Equal, Decentralized · <a href='https://github.com/jxsite/sbtc' target='_blank'>GitHub Repository</a>"
+      }
+    };
+
+    let currentLang = localStorage.getItem('sbtc_lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('sbtc_lang', lang);
+      document.documentElement.lang = (lang === 'zh' ? 'zh-CN' : 'en');
+      
+      const t = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+          el.innerHTML = t[key];
+        }
+      });
+      document.getElementById('langBtnText').textContent = t.lang_btn;
+      
+      const input = document.getElementById('claimAddress');
+      if (input) {
+        input.placeholder = (lang === 'zh')
+          ? "粘贴你的 SBTC 原生地址，如 sbtc1q9awpc6l2n8wemv8xu3puszknpuvmjtqwqa6lyp"
+          : "Paste your SBTC native address, e.g. sbtc1q9awpc6l2n8wemv8xu3puszknpuvmjtqwqa6lyp";
+      }
+    }
+
+    function toggleLanguage() {
+      applyLanguage(currentLang === 'zh' ? 'en' : 'zh');
+    }
+
+    function copyDonateAddr() {
+      const addr = document.getElementById('donateAddr').innerText;
+      navigator.clipboard.writeText(addr).then(() => {
+        alert(currentLang === 'zh' ? '水龙头收款地址已成功复制到剪贴板！' : 'Faucet address copied to clipboard!');
+      }).catch(err => {
+        prompt(currentLang === 'zh' ? '请按 Ctrl+C 复制地址：' : 'Press Ctrl+C to copy:', addr);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLanguage(currentLang);
+    });
+  </script>
+</body>
+</html>

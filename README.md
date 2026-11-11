@@ -72,7 +72,7 @@ No developer setup required. Unpack and mine with a single click!
 * 🌍 **Official Website**: [https://jxsite.github.io/sbtc/](https://jxsite.github.io/sbtc/)
 * 🔍 **Blockchain Explorer**: [https://sbtc.leishen.work](https://sbtc.leishen.work)  
   *Search blocks, transactions, and miner address balances in real time.*
-* 🚰 **Test Faucet**: [https://sbtc.leishen.work/faucet](https://sbtc.leishen.work/faucet)
+* 🚰 **SBTC Faucet (Claim 1 Free SBTC)**: [https://jxsite.github.io/sbtc/faucet.html](https://jxsite.github.io/sbtc/faucet.html) *(Backup node: [https://sbtc.leishen.work/faucet](https://sbtc.leishen.work/faucet))*
 * 📦 **Downloads**: [https://sbtc.leishen.work/download](https://sbtc.leishen.work/download)
 * 📡 **Mainnet Seed Node**: `addnode=43.206.228.239:29333` (P2P port `29333`, RPC port `29332`)
 
@@ -159,7 +159,7 @@ SBTC 是一条**完全独立的原生公链**，拥有自己的创世区块与�
 * 🌍 **官网展示页**：[https://jxsite.github.io/sbtc/](https://jxsite.github.io/sbtc/)
 * 🔍 **官方区块链浏览器**：[https://sbtc.leishen.work](https://sbtc.leishen.work)  
   *输入你的地址或交易 ID，即可实时查看出块确认与全网算力数据。*
-* 🚰 **在线水龙头体验**：[https://sbtc.leishen.work/faucet](https://sbtc.leishen.work/faucet)
+* 🚰 **在线水龙头（免费领 1 SBTC）**：[https://jxsite.github.io/sbtc/faucet.html](https://jxsite.github.io/sbtc/faucet.html) *(备用节点: [https://sbtc.leishen.work/faucet](https://sbtc.leishen.work/faucet))*
 * 📦 **钱包/节点下载中心**：[https://sbtc.leishen.work/download](https://sbtc.leishen.work/download)
 * 📡 **主网种子节点**：`addnode=43.206.228.239:29333`（P2P 端口 `29333`，RPC 端口 `29332`）
 
