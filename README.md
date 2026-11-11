@@ -73,6 +73,7 @@ No developer setup required. Unpack and mine with a single click!
 * 🔍 **Blockchain Explorer**: [https://sbtc.leishen.work](https://sbtc.leishen.work)  
   *Search blocks, transactions, and miner address balances in real time.*
 * 🚰 **SBTC Faucet (Claim 1 Free SBTC)**: [https://jxsite.github.io/sbtc/faucet.html](https://jxsite.github.io/sbtc/faucet.html) *(Backup node: [https://sbtc.leishen.work/faucet](https://sbtc.leishen.work/faucet))*
+* 💎 **OTC Marketplace (1 USDT = 1 SBTC)**: [https://jxsite.github.io/sbtc/market.html](https://jxsite.github.io/sbtc/market.html) *(BNB Smart Chain BEP-20 USDT)*
 * 📦 **Downloads**: [https://sbtc.leishen.work/download](https://sbtc.leishen.work/download)
 * 📡 **Mainnet Seed Node**: `addnode=43.206.228.239:29333` (P2P port `29333`, RPC port `29332`)
 
@@ -160,6 +161,7 @@ SBTC 是一条**完全独立的原生公链**，拥有自己的创世区块与�
 * 🔍 **官方区块链浏览器**：[https://sbtc.leishen.work](https://sbtc.leishen.work)  
   *输入你的地址或交易 ID，即可实时查看出块确认与全网算力数据。*
 * 🚰 **在线水龙头（免费领 1 SBTC）**：[https://jxsite.github.io/sbtc/faucet.html](https://jxsite.github.io/sbtc/faucet.html) *(备用节点: [https://sbtc.leishen.work/faucet](https://sbtc.leishen.work/faucet))*
+* 💎 **官方跨链交易市场（1 USDT = 1 SBTC）**：[https://jxsite.github.io/sbtc/market.html](https://jxsite.github.io/sbtc/market.html) *(支持 BSC 链 USDT 购买，24H 机器人全自动发币)*
 * 📦 **钱包/节点下载中心**：[https://sbtc.leishen.work/download](https://sbtc.leishen.work/download)
 * 📡 **主网种子节点**：`addnode=43.206.228.239:29333`（P2P 端口 `29333`，RPC 端口 `29332`）
 
